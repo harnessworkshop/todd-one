@@ -47,6 +47,12 @@ jobs:
         with:
           args: --all-projects --org=$SNYK_ORG
 
+      - name: Snyk monitor (save results to dashboard)
+        uses: snyk/actions/maven-3-jdk-17@master
+        with:
+          command: monitor
+          args: --all-projects --org=${{ env.SNYK_ORG }} --debug
+
       - name: Log in to Docker Hub
         run: echo "$DOCKERHUB_TOKEN" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
 
@@ -60,6 +66,13 @@ jobs:
         continue-on-error: true
         with:
           image: docker.io/$DOCKERHUB_USERNAME/$PROJECT_SLUG:latest
+          args: --org=$SNYK_ORG
+      
+      - name: Snyk monitor (save results to dashboard)
+        uses: snyk/actions/docker@master
+        with:
+          image: docker.io/$DOCKERHUB_USERNAME/$PROJECT_SLUG:latest
+          command: monitor
           args: --org=$SNYK_ORG --debug
 
       - name: Set up GCloud auth
