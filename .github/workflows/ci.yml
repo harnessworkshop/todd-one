@@ -28,7 +28,7 @@ jobs:
       GKE_CLUSTER: "tr-cluster"
       GKE_LOCATION: "us-central1"
       GKE_PROJECT: "tr-cluster"
-      SNYK_ORG: "todd.parson"
+      SNYK_ORG: "b4c68fa5-d1b2-451f-a162-ea2ed840727f"
 
     steps:
       - uses: actions/checkout@v3
