@@ -44,7 +44,7 @@ jobs:
       - name: Run Snyk Maven scan
         uses: snyk/actions/maven-3-jdk-17@master
         with:
-          args: test --all-projects --org=$SNYK_ORG --debug
+          args: --all-projects --org=$SNYK_ORG --debug
 
       - name: Log in to Docker Hub
         run: echo "$DOCKERHUB_TOKEN" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
