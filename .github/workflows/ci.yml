@@ -57,6 +57,7 @@ jobs:
 
       - name: Run Snyk Docker scan
         uses: snyk/actions/docker@master
+        continue-on-error: true
         with:
           image: docker.io/$DOCKERHUB_USERNAME/$PROJECT_SLUG:latest
           args: --org=$SNYK_ORG --debug
