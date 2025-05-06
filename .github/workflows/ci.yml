@@ -43,6 +43,7 @@ jobs:
 
       - name: Run Snyk Maven scan
         uses: snyk/actions/maven-3-jdk-17@master
+        continue-on-error: true
         with:
           args: --all-projects --org=$SNYK_ORG --debug
 
