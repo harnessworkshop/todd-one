@@ -45,7 +45,7 @@ jobs:
         uses: snyk/actions/maven-3-jdk-17@master
         continue-on-error: true
         with:
-          args: --all-projects --org=$SNYK_ORG --debug
+          args: --all-projects --org=$SNYK_ORG
 
       - name: Log in to Docker Hub
         run: echo "$DOCKERHUB_TOKEN" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
@@ -59,7 +59,7 @@ jobs:
         uses: snyk/actions/docker@master
         with:
           image: docker.io/$DOCKERHUB_USERNAME/$PROJECT_SLUG:latest
-          args: test --org=$SNYK_ORG
+          args: --org=$SNYK_ORG --debug
 
       - name: Set up GCloud auth
         uses: google-github-actions/auth@v2
