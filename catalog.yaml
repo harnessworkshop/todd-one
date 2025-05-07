@@ -4,6 +4,7 @@ metadata:
   name: todd-one
   annotations:
     backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: harnessworkshop/todd-one
 spec:
   type: service
   owner: Todd Parson
